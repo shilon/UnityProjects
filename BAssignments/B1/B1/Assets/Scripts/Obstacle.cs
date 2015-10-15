@@ -24,6 +24,7 @@ public class Obstacle : MonoBehaviour {
             {
                // Debug.DrawLine(ray.origin, hit.point);
             }
+
             if (hit.transform.tag == "Obstacle")
             {
                 obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
