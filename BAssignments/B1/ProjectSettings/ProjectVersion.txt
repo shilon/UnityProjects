@@ -1,0 +1,6 @@
+<<<<<<< HEAD:BAssignments/B1/B1/ProjectSettings/ProjectVersion.txt
+m_EditorVersion: 5.2.1f1
+=======
+m_EditorVersion: 5.1.3f1
+>>>>>>> 5f9317359ed458a9bc7a8f25239c34b9a37d1ec2:BAssignments/B1/ProjectSettings/ProjectVersion.txt
+m_StandardAssetsVersion: 0
