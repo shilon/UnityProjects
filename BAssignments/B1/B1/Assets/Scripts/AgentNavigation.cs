@@ -31,7 +31,8 @@ public class AgentNavigation : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         Rend = GetComponent<Renderer>();
         Rend.enabled = true;
-       
+        cam.enabled = false;
+
     }
 
     // Update is called once per frame
