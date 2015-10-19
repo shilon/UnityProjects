@@ -7,13 +7,13 @@ public class ThirdPersonCamera : MonoBehaviour
 	public float distanceUp;			// distance above the craft
 	public float smooth;				// how smooth the camera movement is
 	
-	private GameObject hovercraft;		// to store the hovercraft
+	public GameObject animChar;		// to store the hovercraft
 	private Vector3 targetPosition;		// the position the camera is trying to be in
 	
 	Transform follow;
 	
 	void Start(){
-		follow = GameObject.FindWithTag ("Player").transform;	
+		follow = animChar.transform;	
 	}
 	
 	void LateUpdate ()

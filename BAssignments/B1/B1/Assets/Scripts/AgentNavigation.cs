@@ -15,14 +15,21 @@ public class AgentNavigation : MonoBehaviour {
     private void OnSelected()
     {
         isSelected = true;
-        GetComponent<Renderer>().material.color = selectedAgent.color;
+        
+       
+            GetComponent<Renderer>().material.color = selectedAgent.color;
+        
         cam.enabled = true;
     }
 
     private void OnUnselected()
     {
         isSelected = false;
-        GetComponent<Renderer>().material.color = AgentnotSelected.color;
+       
+      
+        
+       GetComponent<Renderer>().material.color = AgentnotSelected.color;
+        
         cam.enabled = false;
     }
     // Use this for initialization
@@ -30,7 +37,7 @@ public class AgentNavigation : MonoBehaviour {
        // agentSelected = false;
         agent = GetComponent<NavMeshAgent>();
         Rend = GetComponent<Renderer>();
-        Rend.enabled = true;
+        //Rend.enabled = true;
         cam.enabled = false;
 
     }

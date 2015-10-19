@@ -490,7 +490,9 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nDefault bone length found in this file is different
+      form the one found in the source avatar:\n\t'LeftLeg' : position error = 7.696520
+      mm\n\t'LeftFoot' : position error = 15.233778 mm\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 0
@@ -506,7 +508,7 @@ ModelImporter:
       firstFrame: 76.4000015
       lastFrame: 91.5999985
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: -.550000012
       level: 0
       cycleOffset: 0
       loop: 0
@@ -532,7 +534,7 @@ ModelImporter:
       firstFrame: 76.4000015
       lastFrame: 91.5999985
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: -.560000002
       level: 0
       cycleOffset: .5
       loop: 0

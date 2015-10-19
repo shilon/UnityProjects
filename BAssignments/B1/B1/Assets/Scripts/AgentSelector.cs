@@ -34,7 +34,7 @@ public class AgentSelector : MonoBehaviour
                 {
                     var obsVar = agents[i].GetComponent<AgentNavigation>();
                     obsVar.isSelected = false;
-                    obsVar.Rend.material.color = AgentnotSelected.color;
+                    //obsVar.Rend.material.color = AgentnotSelected.color;
                     //obsVar.material.color = new Color(0.5F, 0.5F, 0.9F, 1.0F); //grey
                 }
               
@@ -42,7 +42,7 @@ public class AgentSelector : MonoBehaviour
                 var obsVars = hit.transform.gameObject.GetComponent<AgentNavigation>();
              
                 obsVars.isSelected = true;
-                obsVars.Rend.material.color = selectedAgent.color;
+               // obsVars.Rend.material.color = selectedAgent.color;
                
 
                 //obsVars.material.color = new Color(1.0F, 0.92F, 0.016F, 1.0F);//yellow
