@@ -7,8 +7,8 @@ Check out our website: [Team #31 at Blogspot](https://cg-f15-31-rutgers.blogspot
 
 ###B1: Navigation and Animation
 1. I am a fun project!
-2. Features
-3. Description
+2. Features: Detailed environments (including mazes, platforms, walls, bottleneck areas, ramps, roaming devils, and Nazguls), animated humanoid models (able to run, jump, walk, and idle based on user input)
+3. Description: 
 
 ###B2: Inverse Kinematics
 1. I am a hard project!
