@@ -1,7 +1,7 @@
 #Group Name
 ######Unity Projects - CG Fall 2015 @ Rutgers
-######By: *[Leader], [Member1], [Member2], [Member3]*
-Check out our website: [Group Name Website](https://www.google.com "Google's Homepage!")
+######By: *Caroline Swinyer (cs851) and Dan Beran (dberan)*
+Check out our website: [Team #31 at Blogspot](https://cg-f15-31-rutgers.blogspot.com "Dropping our mixtape since 2015")
 
 ![alt text](teamLogo.png)
 
