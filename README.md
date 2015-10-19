@@ -1,4 +1,4 @@
-#Group Name
+#Team #31
 ######Unity Projects - CG Fall 2015 @ Rutgers
 ######By: *Caroline Swinyer (cs851) and Dan Beran (dberan)*
 Check out our website: [Team #31 at Blogspot](https://cg-f15-31-rutgers.blogspot.com "CHECK OUT OUR MIXTAPE FAM")
