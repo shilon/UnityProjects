@@ -104,11 +104,13 @@ public class MyBehaviorTreeWorking : MonoBehaviour
                         new LeafWait(2000),
                         numberOfParticipants[player2Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("HEADSHAKE", AnimationLayer.Face, 1000),
                         new LeafWait(2000),
-                        numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("SATNIGHTFEVER", AnimationLayer.Hand, 1000),
+                        numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("SATNIGHTFEVER", AnimationLayer.Hand, 3000),
                         new LeafWait(2000),
                         numberOfParticipants[player2Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("BREAKDANCE", AnimationLayer.Body, 1000),
                         new LeafWait(2000), 
-                        numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("SURRENDER", AnimationLayer.Body, 1000),
+                        numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("SURPRISED", AnimationLayer.Hand, 2000),
+                        new LeafWait(2000), 
+                        numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("CLAP", AnimationLayer.Hand, 1000),
                         new LeafWait(2000));
 
     }
@@ -121,6 +123,14 @@ public class MyBehaviorTreeWorking : MonoBehaviour
             new LeafWait(1000));
 
 	}
+
+    protected Node ST_ShakeHands(Val<FullBodyBipedEffector> effector, Val<InteractionObject> obj, int player1Index)
+    {
+        
+        return new Sequence(
+            numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().Node_StartInteraction(effector, obj));
+    }
+
     protected Node ST_Gesture(int player1Index)
     {
         //Val<Vector3> position = Val.V(() => target.position);
@@ -130,14 +140,14 @@ public class MyBehaviorTreeWorking : MonoBehaviour
                 new LeafWait(2000)));
     }
 
-    
+
 
     protected Node BuildTreeRoot()
-	{
+    {
         int[] playerIndex = new int[numberOfParticipants.Length];
         Val<Vector3>[] playerPos = new Val<Vector3>[numberOfParticipants.Length];
 
-        for(int i = 0; i < playerIndex.Length; i++)
+        for (int i = 0; i < playerIndex.Length; i++)
         {
             playerIndex[i] = i;
             //[i] = Val.V(() => numberOfParticipants[i].transform.position);
@@ -146,10 +156,11 @@ public class MyBehaviorTreeWorking : MonoBehaviour
         //Val<Vector3> player2pos = Val.V(() => numberOfParticipants[playerIndex[1]].transform.position);
 
         return
+            new Sequence(
                 new SequenceParallel(
                     new Sequence(
                         this.ST_ApproachAndOrient(locations[0], numberOfParticipants[0].gameObject.transform, playerIndex[0], locations[1], numberOfParticipants[1].gameObject.transform, playerIndex[1]),
-                        this.Converse(playerIndex[0], playerIndex[1])),  
+                        this.Converse(playerIndex[0], playerIndex[1])),
                     new Sequence(
                         this.ST_ApproachAndOrient(locations[2], numberOfParticipants[2].gameObject.transform, playerIndex[2], locations[3], numberOfParticipants[3].gameObject.transform, playerIndex[3]),
                         this.Converse(playerIndex[2], playerIndex[3]),
@@ -162,7 +173,10 @@ public class MyBehaviorTreeWorking : MonoBehaviour
                                 this.ST_DanceBattle(playerIndex[0], playerIndex[1]),
                                 new SequenceParallel(
                                     this.ST_Gesture(playerIndex[2]),
-                                    this.ST_Gesture(playerIndex[3])))));
+                                    this.ST_Gesture(playerIndex[3]))))),
+                    new Sequence(
+                        this.ST_ApproachAndOrient(locations[10], numberOfParticipants[0].gameObject.transform, playerIndex[0], locations[11], numberOfParticipants[1].gameObject.transform, playerIndex[1]),
+                        this.ST_ShakeHands(eff[1], obj[6], playerIndex[0])));
 
 
     }
