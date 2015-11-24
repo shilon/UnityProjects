@@ -15,6 +15,7 @@ public class MyBehaviorTreeWorking : MonoBehaviour
     public InteractionSystem[] interacts;
     public Transform[] searchPoints;
 
+
     private BehaviorAgent behaviorAgent;
 	// Use this for initialization
 	void Start ()
@@ -133,20 +134,21 @@ public class MyBehaviorTreeWorking : MonoBehaviour
 
    
 
-    protected Node ST_Gesture(int player1Index)
+    protected Node ST_Gesture(int player1Index, int loop)
     {
         //Val<Vector3> position = Val.V(() => target.position);
-        return new DecoratorLoop(5,
+        return new DecoratorLoop(loop,
             new Sequence(
-                numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("CHEER", AnimationLayer.Hand, 3000),
-                new LeafWait(2000)));
+                numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().ST_PlayGesture("CHEER", AnimationLayer.Hand, 1000),
+                new LeafWait(1000)));
     }
     protected Node ST_LightSwitch(Val<FullBodyBipedEffector> effector, Val<InteractionObject> obj, int player1Index, Transform objpos)
     {
         Val<Vector3> objPos = Val.V(() => objpos.position);
         return new Sequence(
             numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().Node_GoTo(objPos),
-            numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().Node_StartInteraction(effector, obj));
+            numberOfParticipants[player1Index].GetComponent<BehaviorMecanim>().Node_StartInteraction(effector, obj),
+            this.ST_Gesture(player1Index, 2));
 
     }
     protected Node ST_Search( int player1Index)
@@ -209,8 +211,8 @@ public class MyBehaviorTreeWorking : MonoBehaviour
                                 this.ST_DanceBattle(playerIndex[0], playerIndex[1]),
 
                                 new SequenceParallel(
-                                    this.ST_Gesture(playerIndex[2]),
-                                    this.ST_Gesture(playerIndex[3]))))),
+                                    this.ST_Gesture(playerIndex[2],  10),
+                                    this.ST_Gesture(playerIndex[3], 10))))),
                     new Sequence(
                         this.ST_ApproachAndOrient(locations[10], numberOfParticipants[0].gameObject.transform, playerIndex[0], locations[11], numberOfParticipants[1].gameObject.transform, playerIndex[1]),
                         this.ST_ShakeHands(obj[6], eff[1], eff[1])),
@@ -254,17 +256,4 @@ public class MyBehaviorTreeWorking : MonoBehaviour
 
   
 
-    void OnGUI()
-    {
-        if (GUILayout.Button("Trigger Event"))
-        {
-            
-      
-
-            
-            
-           
-
-        }
-    }
 }
