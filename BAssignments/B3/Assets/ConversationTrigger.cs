@@ -30,7 +30,7 @@ public class ConversationTrigger : MonoBehaviour {
 
 void OnTriggerEnter()
     {
-        Debug.Log("triggered switch");
+       // Debug.Log("triggered switch");
        // behaviorAgent.StartBehavior();
     }
 
