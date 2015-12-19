@@ -5,6 +5,7 @@ using TreeSharpPlus;
 
 public class PartyBehavior : MonoBehaviour {
 
+    public bool mainEvent;
     public Transform[] locations;
     public GameObject[] wanderers;
     public GameObject[] eaters;
@@ -21,6 +22,7 @@ public class PartyBehavior : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        mainEvent = false;
         behaviorAgent = new BehaviorAgent(this.BuildTreeRoot());
         behaviorAgent2 = new BehaviorAgent(this.event2());
         BehaviorManager.Instance.Register(behaviorAgent);
@@ -30,6 +32,14 @@ public class PartyBehavior : MonoBehaviour {
 
     void Update()
     {
+        if (mainEvent.Equals(false))
+        {
+            behaviorAgent.StartBehavior();
+        }
+        else
+        {
+            behaviorAgent.StopBehavior();
+        }
         if (Input.GetKeyDown(KeyCode.R) == true)
         {
            // behaviorAgent.StartBehavior();
@@ -130,8 +140,11 @@ public class PartyBehavior : MonoBehaviour {
         ForEach<GameObject> middleStory = new ForEach<GameObject>((daniel) =>
         {
            
-            return new DecoratorLoop(
-                
+            return new Sequence(
+             
+            
+                 new DecoratorLoop(
+                    
                     new SequenceShuffle(
 
                         this.ST_ApproachAndWait(daniel, locations[9]),
@@ -139,10 +152,11 @@ public class PartyBehavior : MonoBehaviour {
                         this.ST_ApproachAndWait(daniel, locations[13]),
                         this.ST_ApproachAndWait(daniel, locations[14]),
                         this.ST_ApproachAndWait(daniel, locations[15]),
-                        this.ST_Gesture(daniel, 2)));
+                        this.ST_Gesture(daniel, 2))));
                        
 
             }, wanderers);
+
         return new SequenceParallel(middleStory, Eating, dance);
 
 
@@ -150,7 +164,7 @@ public class PartyBehavior : MonoBehaviour {
 
     void OnTriggerEnter()
     {
-        Debug.Log("triggered switch");
+        //Debug.Log("triggered switch");
        // behaviorAgent.StopBehavior();
        // behaviorAgent2.StartBehavior();
     }

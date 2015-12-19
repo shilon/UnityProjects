@@ -31,7 +31,7 @@ public class DoorOpen : MonoBehaviour {
     {
         if (collision.tag == "Right Hand")
         {
-            Debug.Log("button pushed");
+            //Debug.Log("button pushed");
             //door.GetComponent<Animation>().Play();
 
             open = true;
