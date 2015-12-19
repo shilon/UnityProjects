@@ -25,14 +25,14 @@ public class PartyBehavior : MonoBehaviour {
         behaviorAgent2 = new BehaviorAgent(this.event2());
         BehaviorManager.Instance.Register(behaviorAgent);
         BehaviorManager.Instance.Register(behaviorAgent2);
-        //behaviorAgent.StartBehavior();
+        behaviorAgent.StartBehavior();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) == true)
         {
-            behaviorAgent.StartBehavior();
+           // behaviorAgent.StartBehavior();
 
         }
         if (Input.GetKeyDown(KeyCode.K) == true)
